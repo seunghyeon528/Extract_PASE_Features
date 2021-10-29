@@ -103,6 +103,9 @@ with torch.no_grad():
             pase_feature = (output_feature[i])[:,:feature_len]
             save_path = save_paths[i]
             save_path = save_path.replace(".wav",".npy")
+            dir_path = os.path.dirname(save_path)
+            if not os.path.exists(dir_path):
+                os.makedirs(dir_path)
             np.save(save_path,pase_feature)
 
             
